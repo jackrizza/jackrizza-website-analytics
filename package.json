@@ -1,32 +1,13 @@
 {
-  "name": "node-analytics",
-  "version": "1.0.0",
-  "description": "This is the analytics manager for jackrizza.com. It runs background data queries so the website just fetches arrays for charts.",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "polymer-starter-kit",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "eslint": "^3.12.0",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-html": "^1.7.0"
   },
-  "keywords": [
-    "node",
-    "analytics",
-    "jackrizza.com",
-    "charts",
-    "arrays"
-  ],
-  "author": "jackrizza.com",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^0.8.5",
-    "body-parser": "^1.15.0",
-    "connect-flash": "0.1.1",
-    "cookie-parser": "^1.4.1",
-    "debug": "0.7.4",
-    "express": "^4.13.4",
-    "express-session": "^1.13.0",
-    "jade": "1.0.0",
-    "passport": "0.1.17",
-    "passport-local": "0.1.6",
-    "rethinkdb": "^2.2.0",
-    "socket.io": "0.9.16"
+  "scripts": {
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "npm run lint && polymer test"
   }
 }
