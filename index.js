@@ -20,32 +20,22 @@ var perDayData = [
 
 var analyze = () => {
         data.init();
-        console.log("Analyzing data...");
-        data._statsGetter().filter((a) => {
-                slugCount(JSON.parse(a).url)
-                a = JSON.parse(a);
-                a = a.split(' ')[0];
-                if (dateData[0].includes(a.time)) {
-                        var b = dateData[0].indexOf(a.time);
-                        dateData[1][b] = dateData[1][b] + 1;
-                } else {
-                        perDayData[0].push(a.time);
-                        dateData[0].push(a.time)
-                        dateData[1].push(1);
-                }
-        });
-
-        console.log("====================\n   Views Per Day\n====================")
-        for (var i = 0; i < dateData[0].length; i++) {
-                console.log(dateData[0][i] + " : " + dateData[1][i]);
-        }
-
-        console.log("====================\n   Views Per slug\n====================")
-        console.log("Index | About | login | Admin")
-        console.log(dateData[2]);
-        console.log(perDayData);
-
-        return "It worked";
+        setTimeout(() => {
+                console.log("Analyzing data...");
+                data._statsGetter().filter((a) => {
+                        slugCount(JSON.parse(a).url)
+                        a = JSON.parse(a);
+                        var time = a.time.split(' ')[0];
+                        if (dateData[0].includes(time)) {
+                                var b = dateData[0].indexOf(time);
+                                dateData[1][b] = dateData[1][b] + 1;
+                        } else {
+                                perDayData[0].push(time);
+                                dateData[0].push(time)
+                                dateData[1].push(1);
+                        }
+                });
+        }, 2000);
 
 
         // ending program
@@ -74,3 +64,5 @@ var slugCount = (url) => {
 }
 
 module.exports = analyze;
+
+analyze();
