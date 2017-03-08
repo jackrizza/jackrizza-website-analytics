@@ -1,6 +1,7 @@
 'use strict';
 
 var data = require('./data.js');
+var now = require("performance-now");
 // array(0) => dates
 // array(1) => totalViews
 // array(2) => slug count
@@ -17,8 +18,10 @@ var perDayData = [
         [],
         []
 ];
-
-var analyze = () => {
+var start = '';
+var end = '';
+var analyze = new Promise( (resolve, reject) => {
+        start = now()
         data.init();
         setTimeout(() => {
                 console.log("Analyzing data...");
@@ -35,15 +38,17 @@ var analyze = () => {
                                 dateData[1].push(1);
                         }
                 });
+                console.log(dateData);
+                resolve('Sucsess');
         }, 2000);
-
+        
 
         // ending program
         // do not delete
         // process.exit();
         //
         //
-}
+});
 var slugCount = (url) => {
         switch (url) {
                 case "index":
@@ -65,4 +70,10 @@ var slugCount = (url) => {
 
 module.exports = analyze;
 
-analyze();
+analyze.then( () => {
+        end = now();
+        console.log(end.toFixed(3) - start.toFixed(3));
+});
+setTimeout( () => {
+        process.exit();
+}, 5000)
