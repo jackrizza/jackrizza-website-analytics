@@ -20,7 +20,7 @@ var perDayData = [
 ];
 var start = '';
 var end = '';
-var analyze = new Promise( (resolve, reject) => {
+var analyze = new Promise((resolve, reject) => {
         start = now()
         data.init();
         setTimeout(() => {
@@ -41,7 +41,7 @@ var analyze = new Promise( (resolve, reject) => {
                 console.log(dateData);
                 resolve('Sucsess');
         }, 2000);
-        
+
 
         // ending program
         // do not delete
@@ -49,13 +49,14 @@ var analyze = new Promise( (resolve, reject) => {
         //
         //
 });
+
 var slugCount = (url) => {
         switch (url) {
                 case "index":
                         dateData[2][0] = dateData[2][0] + 1
                         break;
                 case "admin":
-                        dateData[2][2] = dateData[2][2] + 1
+                        dateData[2][1] = dateData[2][1] + 1
                         break;
                 case "work":
                         dateData[2][2] = dateData[2][2] + 1
@@ -70,10 +71,10 @@ var slugCount = (url) => {
 
 module.exports = analyze;
 
-analyze.then( () => {
+analyze.then(() => {
         end = now();
         console.log(end.toFixed(3) - start.toFixed(3));
 });
-setTimeout( () => {
+setTimeout(() => {
         process.exit();
 }, 5000)
