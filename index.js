@@ -65,7 +65,7 @@ var slugCount = (url) => {
                         dateData[2][3] = dateData[2][3] + 1
                         break;
                 default:
-                        return 0
+                        return;
         }
 }
 
@@ -73,7 +73,8 @@ module.exports = analyze;
 
 analyze.then(() => {
         end = now();
-        console.log(end.toFixed(3) - start.toFixed(3));
+        var time = end.toFixed(3) - start.toFixed(3);
+        console.log("Elapsed Time : " + time);
 });
 setTimeout(() => {
         process.exit();
