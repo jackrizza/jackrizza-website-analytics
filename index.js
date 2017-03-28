@@ -67,7 +67,7 @@ var analyze = new Promise((resolve, reject) => {
         console.log('==========starttest==========');
         for( var i = 0; i < dateData[0].length; i++) {
                 //((a < b) ? 2 : 3);
-                console.log("total views on " + dateData[0][i] + " is " + dateData[1][i] + ((dateData[1][i] == 1) ? " view" : " views") );
+                console.log("total views on " + dateData[0][i] + " is " + dateData[1][i] + ((dateData[1][i] === 1) ? " view" : " views") );
         }
         console.log('==========endtest==========');
         json.init();
