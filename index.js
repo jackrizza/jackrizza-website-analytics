@@ -2,8 +2,29 @@
 
 var data = require('./data.js');
 var now = require("performance-now");
+var json = require('./json.js');
+
+
+var slugCount = (url) => {
+        switch (url) {
+                case "index":
+                        dateData[2][0] = dateData[2][0] + 1
+                        break;
+                case "admin":
+                        dateData[2][1] = dateData[2][1] + 1
+                        break;
+                case "work":
+                        dateData[2][2] = dateData[2][2] + 1
+                        break;
+                case "login":
+                        dateData[2][3] = dateData[2][3] + 1
+                        break;
+                default:
+                        return;
+        }
+}
 // array(0) => dates
-// array(1) => totalViews
+// array(1) => totalViews for array(0) dates
 // array(2) => slug count
 //      slug (0) => index
 //      slug (1) => about
@@ -38,44 +59,22 @@ var analyze = new Promise((resolve, reject) => {
                                 dateData[1].push(1);
                         }
                 });
-                console.log(dateData);
+                // console.log(dateData);
                 resolve('Sucsess');
         }, 2000);
 
-
-        // ending program
-        // do not delete
-        // process.exit();
-        //
-        //
-});
-
-var slugCount = (url) => {
-        switch (url) {
-                case "index":
-                        dateData[2][0] = dateData[2][0] + 1
-                        break;
-                case "admin":
-                        dateData[2][1] = dateData[2][1] + 1
-                        break;
-                case "work":
-                        dateData[2][2] = dateData[2][2] + 1
-                        break;
-                case "login":
-                        dateData[2][3] = dateData[2][3] + 1
-                        break;
-                default:
-                        return;
+}).then(() => {
+        console.log('==========starttest==========');
+        for( var i = 0; i < dateData[0].length; i++) {
+                //((a < b) ? 2 : 3);
+                console.log("total views on " + dateData[0][i] + " is " + dateData[1][i] + ((dateData[1][i] == 1) ? " view" : " views") );
         }
-}
-
-module.exports = analyze;
-
-analyze.then(() => {
+        console.log('==========endtest==========');
+        json.init();
         end = now();
         var time = end.toFixed(3) - start.toFixed(3);
-        console.log("Elapsed Time : " + time);
-});
-setTimeout(() => {
+        var done = console.log("Elapsed Time : " + time);
         process.exit();
-}, 5000)
+});
+
+module.exports = analyze;

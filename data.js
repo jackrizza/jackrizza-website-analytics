@@ -1,5 +1,7 @@
 'use strict';
+
 var r = require('rethinkdb');
+
 var data = {
         statistics: [],
         gettingDataLists: false,
