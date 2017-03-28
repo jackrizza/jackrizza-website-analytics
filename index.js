@@ -74,7 +74,7 @@ var analyze = new Promise((resolve, reject) => {
         end = now();
         var time = end.toFixed(3) - start.toFixed(3);
         var done = console.log("Elapsed Time : " + time);
-        process.exit();
+        process.exit(-1);
 });
 
 module.exports = analyze;

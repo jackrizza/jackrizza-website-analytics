@@ -16,7 +16,7 @@ var data = {
                         if (err) throw err;
                         cursor.each( (err, row) => {
                                 //failed
-                                if (err) return 0;
+                                if (err) return;
                                 //push data
                                 data._statsSetter(JSON.stringify(row, null, 2));
                         }, () => {
@@ -54,8 +54,7 @@ var data = {
                         data.statApp();
                 }).catch( () => {
                         //failed promise
-                        return 'error';
-                        process.exit();
+                        return;
                 });
 
         }
